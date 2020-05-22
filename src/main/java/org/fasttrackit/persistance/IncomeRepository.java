@@ -12,7 +12,7 @@ import java.util.List;
 
 public class IncomeRepository {
 
-    public void createTask(CreateIncomeRequest request) throws IOException, SQLException {
+    public void createTask(CreateIncomeRequest request) throws IOException, SQLException, ClassNotFoundException {
         String sql ="INSERT INTO incomes (date, description, amount) VALUES (?, ?, ?)";
 
         try(Connection connection = DatabaseConfiguration.getConnection();
@@ -26,7 +26,7 @@ public class IncomeRepository {
 
     }
 
-    public void updateTask(long id, UpdateIncomeRequest request) throws IOException, SQLException {
+    public void updateTask(long id, UpdateIncomeRequest request) throws IOException, SQLException, ClassNotFoundException {
         String sql = "UPDATE incomes SET date = ?, description = ?, amount = ? WHERE id = ?";
 
         try(Connection connection = DatabaseConfiguration.getConnection();
@@ -41,7 +41,7 @@ public class IncomeRepository {
 
     }
 
-    public void deleteTask (long id) throws IOException, SQLException {
+    public void deleteTask (long id) throws IOException, SQLException, ClassNotFoundException {
         String sql = "DELETE FROM incomes WHERE id = ?";
 
         try(Connection connection = DatabaseConfiguration.getConnection();
@@ -52,7 +52,7 @@ public class IncomeRepository {
         }
     }
 
-    public List<Incomes> getTasks() throws IOException, SQLException {
+    public List<Incomes> getTasks() throws IOException, SQLException, ClassNotFoundException {
         String sql = "SELECT id, date, description, amount FROM incomes";
 
         List<Incomes> tasks = new ArrayList<>();
